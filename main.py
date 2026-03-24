@@ -16,25 +16,18 @@ def main():
     # создание таблиц (если не созданы)
     if not sql2sql("sql_scripts/create_tables.sql"):
         print("Таблицы уже созданы")
-    
     # загрузка файлов в stg
     if not process_all_files():
         print("Ошибка при загрузке файлов в stg")
         return
-    
     # загрузка данных в dwh
     if not load_dwh():
         print("Ошибка при загрузке dwh")
-        return
-    
+        return 
     # поиск мошеннических операций
     fraud_count = detect_fraud()
     
-    # шаг 5: итоги
-    print("etl процесс завершен")
     print(f"найдено мошеннических операций: {fraud_count}")
-
-
 
 if __name__ == "__main__":
     main()
