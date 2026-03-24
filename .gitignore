@@ -1,4 +1,6 @@
 env
 .env
 .DS_Store
-DS_Store
+DS_Store__pycache__/
+*.pyc
+.DS_Store

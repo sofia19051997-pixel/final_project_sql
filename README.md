@@ -20,14 +20,24 @@ ETL процесс для загрузки ежедневных выгрузок
 ```
  final_project_sql/
 │
-├── main.py              # Основной ETL процесс
+├── main.py              # Запуск процесса
 ├── ddl_dml.sql          # Скрипты создания таблиц BANK
 ├── requirementxt        # Зависимости Python
 ├── .env.example         # Пример конфигурации
 ├── .gitignore           # Игнорируемые файлы
 ├── README.md            # Документацияция
 │
-├── data/                    # Исходные файлы
+├──py_scripts/
+│   ├── __init__.py             
+│   ├── config.py          # Конфигурация и подключение
+│   ├── file_loader.py     # Загрузка файлов в STG
+│   ├── dwh_loader.py      # Загрузка DWH
+│   └── fraud_detection.py # Поиск мошеннических операций
+│
+├──sql_scripts/
+│   └── create_tables.sql
+│
+├── data/                          # Исходные файлы
 │ ├── transactions_DDMMYYYY.txt
 │ ├── terminals_DDMMYYYY.xlsx
 │ └── passport_blacklist_DDMMYYYY.xlsx
@@ -56,11 +66,11 @@ pip install -r requirements.txt
 3. **Создайте файл `.env`**
 
 ```env
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_NAME=database_name
-DATABASE_USER=database_user
-DATABASE_PASSWORD=database_password
+DB_HOST=localhost
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=database_password
+DB_PORT=5432
 ```
 
 
