@@ -17,22 +17,23 @@ ETL процесс для загрузки ежедневных выгрузок
 
 
 ## Структура проекта
-
+```
  final_project_sql/
 │
-├── main.py                  # Основной ETL процесс
-├── ddl_dml.sql              # С# Скрипты создания таблиц BANK
-├── requirementxt  xt           # Зависимости Python
-├── .env.mple le                # Пример конфигурации
-├── .gitore                     # Игнорируемые файлы
-├── READmd         d         # Документацияция
+├── main.py              # Основной ETL процесс
+├── ddl_dml.sql          # Скрипты создания таблиц BANK
+├── requirementxt        # Зависимости Python
+├── .env.example         # Пример конфигурации
+├── .gitignore           # Игнорируемые файлы
+├── README.md            # Документацияция
 │
-├── data/                    # И# Исходные файлы
+├── data/                    # Исходные файлы
 │ ├── transactions_DDMMYYYY.txt
 │ ├── terminals_DDMMYYYY.xlsx
 │ └── passport_blacklist_DDMMYYYY.xlsx
 │
-└── archive/                  # О# Обработанные файлы (.backup)
+└── archive/                  # Обработанные файлы (.backup)
+````
 
 ## Установка и запуск
 
@@ -104,7 +105,7 @@ def test_connection():
     try:
         with dsn.connect() as conn:
             result = conn.execute(text("SELECT 1"))
-            print("✅ Подключение успешно:", result.scalar())
+            print("Подключение успешно:", result.scalar())
     except Exception as e:
         print("❌ Ошибка подключения:", e)
 ```
